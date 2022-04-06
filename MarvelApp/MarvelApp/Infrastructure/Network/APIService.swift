@@ -24,27 +24,36 @@ class APIService<T:BaseAPI> {
             if statusCode == 200 {
                 guard let jsonResponse = try? response.result.get() else {
                     //json response error
-                    completionHandler(.failure(NSError()))
+                    completionHandler(.failure(MarvelError.parsingError))
                     return
                 }
                 
                 guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) else {
                     //JsonData error
-                    completionHandler(.failure(NSError()))
+                    completionHandler(.failure(MarvelError.parsingError))
                     return
                 }
                 
                 guard let responseObj = try? JSONDecoder().decode(M.self, from: jsonData) else {
                     //Response object error
-                    completionHandler(.failure(NSError()))
+                    completionHandler(.failure(MarvelError.parsingError))
                     return
                 }
-                
                 completionHandler(.success(responseObj))
             } else {
                 switch statusCode {
+                case 401:
+                    completionHandler(.failure(MarvelError.unauthorized))
+                case 404:
+                    completionHandler(.failure(MarvelError.notFound))
+                case 409:
+                    completionHandler(.failure(MarvelError.invalidRequest))
                 default:
-                    completionHandler(.failure(NSError()))
+                    guard NetworkReachabilityManager()?.isReachable ?? false else {
+                        completionHandler(.failure(MarvelError.noInternet))
+                        return
+                    }
+                    completionHandler(.failure(MarvelError.unknown))
                 }
             }
         }
