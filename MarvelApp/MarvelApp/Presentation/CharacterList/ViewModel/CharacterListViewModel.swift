@@ -67,4 +67,8 @@ public class CharacterListViewModel {
     func characterAtIndex(index: Int) -> Character{
         return  getCharactersValue()[index]
     }
+    
+    func characterViewModelCellForCharacterAtIndex(index: Int) -> CharacterTableViewCellViewModel {
+        return CharacterTableViewCellViewModel(character: characterAtIndex(index: index))
+    }
 }

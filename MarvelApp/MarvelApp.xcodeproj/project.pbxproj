@@ -32,6 +32,7 @@
 		5BD926E827FDE78800C3CCAD /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926E727FDE78800C3CCAD /* CharacterTableViewCell.swift */; };
 		5BD926EA27FE1C5400C3CCAD /* CharacterTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926E927FE1C5400C3CCAD /* CharacterTableViewCellViewModel.swift */; };
 		5BD926EC27FE1D3000C3CCAD /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926EB27FE1D3000C3CCAD /* Thumbnail.swift */; };
+		5BD926EF27FED31000C3CCAD /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926EE27FED31000C3CCAD /* CustomNavigationBar.swift */; };
 		B70FFC1A4AF50AD4D10C3F73 /* Pods_MarvelApp_MarvelAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9881A79BFDD41EC9F8C4E04E /* Pods_MarvelApp_MarvelAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		5BD926E727FDE78800C3CCAD /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		5BD926E927FE1C5400C3CCAD /* CharacterTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		5BD926EB27FE1D3000C3CCAD /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
+		5BD926EE27FED31000C3CCAD /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		74E70DAC75BE5DB4962EE3F5 /* Pods-MarvelApp-MarvelAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp-MarvelAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MarvelApp-MarvelAppUITests/Pods-MarvelApp-MarvelAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9881A79BFDD41EC9F8C4E04E /* Pods_MarvelApp_MarvelAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelApp_MarvelAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98B3DF2151AD76C7EC219E40 /* Pods-MarvelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp.release.xcconfig"; path = "Target Support Files/Pods-MarvelApp/Pods-MarvelApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 		5BD926DA27FDAB4000C3CCAD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5BD926ED27FED2E100C3CCAD /* Common */,
 				5BD926DB27FDAB4700C3CCAD /* CharacterList */,
 			);
 			path = Presentation;
@@ -288,6 +291,14 @@
 				5BD926E727FDE78800C3CCAD /* CharacterTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		5BD926ED27FED2E100C3CCAD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5BD926EE27FED31000C3CCAD /* CustomNavigationBar.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		8A7A4E898D2F9CCD6CC3C747 /* Pods */ = {
@@ -566,6 +577,7 @@
 				5BD926C527FD848B00C3CCAD /* CharactersAPI.swift in Sources */,
 				5BD926D327FDA5C400C3CCAD /* CharactersAPIResponse.swift in Sources */,
 				5BD926EC27FE1D3000C3CCAD /* Thumbnail.swift in Sources */,
+				5BD926EF27FED31000C3CCAD /* CustomNavigationBar.swift in Sources */,
 				5BD926DF27FDACEA00C3CCAD /* CharacterListViewModel.swift in Sources */,
 				5BD926D027FD9D1C00C3CCAD /* MarvelError.swift in Sources */,
 				5BD926C027FD7B1000C3CCAD /* APIService.swift in Sources */,
