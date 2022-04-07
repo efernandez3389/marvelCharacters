@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-class APIService<T:BaseAPI> {
+public class APIService<T:BaseAPI> {
     
     func fetchData<M: Decodable>(target: T, responseClass: M.Type, completionHandler: @escaping (Result<M, Error>) -> Void) {
         let method = target.method

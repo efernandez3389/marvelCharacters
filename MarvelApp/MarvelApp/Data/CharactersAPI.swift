@@ -7,22 +7,22 @@
 
 import Alamofire
 
-enum CharactersAPI {
-    case getCharacters
+public enum CharactersAPI {
+    case getCharacters(offset: Int)
     case getCharacterById(id: Int)
 }
 
 extension CharactersAPI: BaseAPI {
     
     
-    var baseURL: String {
+    public var baseURL: String {
         switch self {
         case .getCharacters, .getCharacterById:
             return NetworkConstants.baseURL
         }
     }
     
-    var path: String {
+    public var path: String {
         switch self {
         case .getCharacters:
             return "/characters"
@@ -31,19 +31,26 @@ extension CharactersAPI: BaseAPI {
         }
     }
     
-    var method: HTTPMethod {
+    public var method: HTTPMethod {
         switch self {
         case .getCharacters, .getCharacterById:
             return .get
         }
     }
     
-    var parameters: Parameters? {
+    public var parameters: Parameters? {
         let ts = String(Int(NSTimeIntervalSince1970))
         let stringToBeHashed = "\(ts)\(NetworkConstants.ParameterValues.privateKey)\(NetworkConstants.ParameterValues.publicKey)"
         let hash = stringToBeHashed.MD5()
         switch self {
-        case .getCharacters, .getCharacterById:
+        case .getCharacters(let offset):
+            return [
+                NetworkConstants.ParameterKeys.apiKey: NetworkConstants.ParameterValues.publicKey,
+                NetworkConstants.ParameterKeys.hash: hash,
+                NetworkConstants.ParameterKeys.timestamp: NSTimeIntervalSince1970,
+                "offset": offset
+            ]
+        case .getCharacterById:
             return [
                 NetworkConstants.ParameterKeys.apiKey: NetworkConstants.ParameterValues.publicKey,
                 NetworkConstants.ParameterKeys.hash: hash,
@@ -52,7 +59,7 @@ extension CharactersAPI: BaseAPI {
         }
     }
     
-    var headers: [String : String]? {
+    public var headers: [String : String]? {
         return nil
     }
 }
