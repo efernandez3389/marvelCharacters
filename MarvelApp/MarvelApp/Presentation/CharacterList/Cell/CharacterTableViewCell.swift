@@ -20,7 +20,7 @@ class CharacterTableViewCell: UITableViewCell {
     private let characterNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .blue
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.numberOfLines = 0
         return label
     }()
@@ -56,9 +56,9 @@ class CharacterTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            characterNameLabel.leadingAnchor.constraint(equalTo: characterImageView.trailingAnchor, constant: 0),
+            characterNameLabel.leadingAnchor.constraint(equalTo: characterImageView.trailingAnchor, constant: 16),
             characterNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            characterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            characterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             characterNameLabel.heightAnchor.constraint(equalToConstant: 130)
         ])
     }

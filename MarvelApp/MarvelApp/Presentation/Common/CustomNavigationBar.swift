@@ -11,7 +11,8 @@ class CustomNavigationBar: UIView {
 
     private let backgroundView:  UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = UIColor(red: 226.0/255, green: 0/255, blue: 26/255, alpha: 1.0)
+
         return view
     }()
     

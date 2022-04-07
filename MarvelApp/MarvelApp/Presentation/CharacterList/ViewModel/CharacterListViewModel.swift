@@ -15,7 +15,8 @@ public class CharacterListViewModel {
     
     public let fetch = PublishSubject<()>()
     private let disposeBag = DisposeBag()
-    
+    private let appNavigator: AppNavigator
+
     public let _characters = BehaviorSubject<[Character]>(value: [])
     private let _isLoading =  BehaviorSubject<Bool>(value: false)
     
@@ -27,8 +28,9 @@ public class CharacterListViewModel {
         return _isLoading.asDriver(onErrorJustReturn: false)
     }
     
-    public init(getCharactersUseCase: GetCharactersUseCaseProtocol = GetCharactersUseCase()) {
+    public init(getCharactersUseCase: GetCharactersUseCaseProtocol = GetCharactersUseCase(), appNavigator: AppNavigator) {
         self.getCharactersUseCase = getCharactersUseCase
+        self.appNavigator = appNavigator
         subscribeForFetch()
     }
     
@@ -60,6 +62,7 @@ public class CharacterListViewModel {
         }
         return []
     }
+    
     var numberOfCharacters: Int {
         return getCharactersValue().count
     }
@@ -70,5 +73,10 @@ public class CharacterListViewModel {
     
     func characterViewModelCellForCharacterAtIndex(index: Int) -> CharacterTableViewCellViewModel {
         return CharacterTableViewCellViewModel(character: characterAtIndex(index: index))
+    }
+    
+    func characterSelectedAtIndex(index: Int) {
+        appNavigator.navigate(to: .characterDetails(characterId: characterAtIndex(index: index).id))
+        
     }
 }

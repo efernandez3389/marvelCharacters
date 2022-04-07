@@ -22,6 +22,11 @@ public struct Thumbnail: Codable {
         let httpsPath = "https" + path.dropFirst(4) + quality.rawValue
         return URL(string: "\(httpsPath).\(fileExtension)")
     }
+    
+    public func getUrlString(quality: ThumbnailQuality) -> String {
+        let httpsPath = "https" + path.dropFirst(4) + quality.rawValue
+        return "\(httpsPath).\(fileExtension)"
+    }
 }
 
 extension Thumbnail {

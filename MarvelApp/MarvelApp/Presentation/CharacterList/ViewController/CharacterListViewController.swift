@@ -28,18 +28,11 @@ class CharacterListViewController: UIViewController {
     
     private let customNavigationBar =  CustomNavigationBar()
     
-    public override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     public init(viewModel: CharacterListViewModel) {
         
         self.viewModel = viewModel
         viewModel.fetch.onNext(())
         super.init(nibName: nil, bundle: nil)
-        title = "MArvelApp"
-        self.navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.navigationBar.tintColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -48,14 +41,18 @@ class CharacterListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        self.navigationController?.isNavigationBarHidden = true
+        view.backgroundColor = .white
+
         configureViewHierarchy()
         
         viewModel.isLoading
             .drive(activityIndicator.rx.isAnimating)
             .disposed(by:  disposeBag)
         setupBindings()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     private func configureViewHierarchy()  {
@@ -89,7 +86,6 @@ class CharacterListViewController: UIViewController {
         ])
         
         charactersTableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: "CharacterTableViewCell")
-        //charactersTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         charactersTableView.delegate = self
         charactersTableView.dataSource = self
 
@@ -104,7 +100,6 @@ class CharacterListViewController: UIViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset: CGFloat = 180
         if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height - offset) {
-            //responder.tableViewDidReachEnd()
             viewModel.fetch.onNext(())
         }
     }
@@ -113,7 +108,7 @@ class CharacterListViewController: UIViewController {
 
 extension CharacterListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selected: \(indexPath.row)")
+        viewModel.characterSelectedAtIndex(index: indexPath.row)
     }
 }
 
