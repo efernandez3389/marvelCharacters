@@ -11,7 +11,7 @@ import RxCocoa
 
 class CharacterListViewController: UIViewController {
     let disposeBag = DisposeBag()
-
+    
     private let viewModel: CharacterListViewModel
     private let charactersTableView:  UITableView =  {
         let tableView =  UITableView()
@@ -42,12 +42,9 @@ class CharacterListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
-        configureViewHierarchy()
         
-        viewModel.isLoading
-            .drive(activityIndicator.rx.isAnimating)
-            .disposed(by:  disposeBag)
+        configureViewHierarchy()
+        setupConstraints()
         setupBindings()
     }
     
@@ -59,8 +56,14 @@ class CharacterListViewController: UIViewController {
         view.addSubview(charactersTableView)
         view.addSubview(activityIndicator)
         view.addSubview(customNavigationBar)
-        let layoutGuide = view.safeAreaLayoutGuide
         
+        charactersTableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: "CharacterTableViewCell")
+        charactersTableView.delegate = self
+        charactersTableView.dataSource = self
+    }
+    
+    private func setupConstraints() {
+        let layoutGuide = view.safeAreaLayoutGuide
         
         customNavigationBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -82,16 +85,14 @@ class CharacterListViewController: UIViewController {
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor),
-            
         ])
-        
-        charactersTableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: "CharacterTableViewCell")
-        charactersTableView.delegate = self
-        charactersTableView.dataSource = self
-
     }
     
-    func setupBindings() {        
+    func setupBindings() {
+        viewModel.isLoading
+            .drive(activityIndicator.rx.isAnimating)
+            .disposed(by:  disposeBag)
+        
         viewModel.characters.drive(onNext: {[unowned self] (_) in
             self.charactersTableView.reloadData()
         }).disposed(by: disposeBag)
@@ -129,9 +130,8 @@ extension CharacterListViewController: UITableViewDataSource {
             cell.configure(withViewModel: viewModel.characterViewModelCellForCharacterAtIndex(index: indexPath.row))
             return cell
         }
-    
+        
         return UITableViewCell()
     }
-    
-    
 }
+CharacterDetailViewController

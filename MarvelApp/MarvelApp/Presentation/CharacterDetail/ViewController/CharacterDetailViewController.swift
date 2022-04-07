@@ -12,9 +12,9 @@ import SDWebImage
 
 class CharacterDetailViewController: UIViewController {
     let disposeBag = DisposeBag()
-
+    
     private let viewModel: CharacterDetailViewModel
-
+    
     let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.hidesWhenStopped = true
@@ -49,11 +49,9 @@ class CharacterDetailViewController: UIViewController {
     private let customNavigationBar =  CustomNavigationBar()
     
     public init(viewModel: CharacterDetailViewModel) {
-
         self.viewModel = viewModel
         viewModel.fetch.onNext(())
         super.init(nibName: nil, bundle: nil)
-
     }
     
     required init?(coder: NSCoder) {
@@ -63,21 +61,20 @@ class CharacterDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
-
         view.backgroundColor = .white
         configureViewHierarchy()
-        viewModel.isLoading
-            .drive(activityIndicator.rx.isAnimating)
-            .disposed(by: disposeBag)
+        setupConstraints()
         setupBindings()
     }
-
+    
     private func configureViewHierarchy()  {
         view.addSubview(characterImageView)
         view.addSubview(activityIndicator)
         view.addSubview(characterNameLabel)
-        view.addSubview(characterDescriptionLabel
-        )
+        view.addSubview(characterDescriptionLabel)
+    }
+    
+    private func setupConstraints() {
         let layoutGuide = view.safeAreaLayoutGuide
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -114,16 +111,16 @@ class CharacterDetailViewController: UIViewController {
         ])
     }
     
-    func setupBindings() {
+    private func setupBindings() {
+        viewModel.isLoading
+            .drive(activityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
         viewModel.characters.drive(onNext: {[unowned self] (characters) in
-            //characterImageView.sd_setImage(with: viewModel.imageURL)
             self.characterNameLabel.text = characters.first?.name
             self.characterDescriptionLabel.text = characters.first?.description
         }).disposed(by: disposeBag)
         
-//        viewModel._imageURLString.drive(
-//            characterImageView.sd_setImage(with: URL(string: viewModel.imageURLString))
-//        ).disposed(by: disposeBag)
         viewModel.imageURLString.drive(onNext: { (_imageURLString) in
             self.characterImageView.sd_setImage(with: URL(string: _imageURLString ?? ""))
         }).disposed(by: disposeBag)
