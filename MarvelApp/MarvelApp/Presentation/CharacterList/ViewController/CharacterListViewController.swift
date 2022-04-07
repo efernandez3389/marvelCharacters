@@ -134,4 +134,3 @@ extension CharacterListViewController: UITableViewDataSource {
         return UITableViewCell()
     }
 }
-CharacterDetailViewController
