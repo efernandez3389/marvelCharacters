@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-protocol BaseAPI {
+public protocol BaseAPI {
     var baseURL: String {get}
     var path: String {get}
     var method: HTTPMethod {get}
