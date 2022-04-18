@@ -36,7 +36,7 @@ public class CharacterListViewModel {
     
     private func subscribeForFetch() {
         fetch.withLatestFrom(Observable.combineLatest(isLoading.asObservable(), characters.asObservable()))
-            .subscribe(onNext: {  (isLoading, characters) in
+            .subscribe(onNext: {  (isLoading, _) in
                 guard !isLoading else {return}
                 self.getCharacters()
             }).disposed(by: disposeBag)
@@ -67,7 +67,7 @@ public class CharacterListViewModel {
         return getCharactersValue().count
     }
     
-    func characterAtIndex(index: Int) -> Character{
+    func characterAtIndex(index: Int) -> Character {
         return  getCharactersValue()[index]
     }
     

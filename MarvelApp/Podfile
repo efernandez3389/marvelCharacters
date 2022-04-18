@@ -10,6 +10,8 @@ target 'MarvelApp' do
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'SDWebImage'
+    pod 'SwiftLint'
+
 
   target 'MarvelAppTests' do
     inherit! :search_paths

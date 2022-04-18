@@ -13,7 +13,7 @@ class CharacterListViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     private let viewModel: CharacterListViewModel
-    private let charactersTableView:  UITableView =  {
+    private let charactersTableView: UITableView =  {
         let tableView =  UITableView()
         tableView.separatorStyle =  .none
         tableView.backgroundColor = .clear
@@ -52,7 +52,7 @@ class CharacterListViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
-    private func configureViewHierarchy()  {
+    private func configureViewHierarchy() {
         view.addSubview(charactersTableView)
         view.addSubview(activityIndicator)
         view.addSubview(customNavigationBar)
@@ -84,14 +84,14 @@ class CharacterListViewController: UIViewController {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor)
         ])
     }
     
     func setupBindings() {
         viewModel.isLoading
             .drive(activityIndicator.rx.isAnimating)
-            .disposed(by:  disposeBag)
+            .disposed(by: disposeBag)
         
         viewModel.characters.drive(onNext: {[unowned self] (_) in
             self.charactersTableView.reloadData()
@@ -105,7 +105,6 @@ class CharacterListViewController: UIViewController {
         }
     }
 }
-
 
 extension CharacterListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

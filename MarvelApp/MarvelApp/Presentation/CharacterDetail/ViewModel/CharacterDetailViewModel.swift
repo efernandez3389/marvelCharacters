@@ -33,7 +33,6 @@ public class CharacterDetailViewModel {
         return _imageURLString.asDriver(onErrorJustReturn: nil)
     }
     
-
     public init(characterId: Int, getCharacterByIdUseCase: GetCharacterByIdUseCaseProtocol = GetCharacterByIdUseCase()) {
         self.characterId = characterId
         self.getCharacterByIdUseCase = getCharacterByIdUseCase
@@ -42,7 +41,7 @@ public class CharacterDetailViewModel {
     
     private func subscribeForFetch() {
         fetch.withLatestFrom(Observable.combineLatest(isLoading.asObservable(), characters.asObservable(), imageURLString.asObservable()))
-            .subscribe(onNext: {  (isLoading, characters, imageURLString) in
+            .subscribe(onNext: {  (isLoading, _, _) in
                 guard !isLoading else {return}
                 self.getCharacterById()
             }).disposed(by: disposeBag)

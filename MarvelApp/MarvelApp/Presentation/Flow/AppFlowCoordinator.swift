@@ -20,15 +20,15 @@ final class AppFlowCoordinator {
     }
     
     private func goToCharacterListView() {
-        let vc =  CharacterListViewController(viewModel: CharacterListViewModel(appNavigator: self))
+        let viewController =  CharacterListViewController(viewModel: CharacterListViewModel(appNavigator: self))
 
-        self.rootVc.pushViewController(vc, animated: true)
+        self.rootVc.pushViewController(viewController, animated: true)
     }
     
     private func goToCharacterDetailView(characterId: Int) {
         
-        let vc = CharacterDetailViewController(viewModel: CharacterDetailViewModel(characterId: characterId))
-        self.rootVc.pushViewController(vc, animated: true)
+        let viewController = CharacterDetailViewController(viewModel: CharacterDetailViewModel(characterId: characterId))
+        self.rootVc.pushViewController(viewController, animated: true)
     }
 }
 

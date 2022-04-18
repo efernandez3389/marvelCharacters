@@ -67,7 +67,7 @@ class CharacterDetailViewController: UIViewController {
         setupBindings()
     }
     
-    private func configureViewHierarchy()  {
+    private func configureViewHierarchy() {
         view.addSubview(characterImageView)
         view.addSubview(activityIndicator)
         view.addSubview(characterNameLabel)
@@ -79,7 +79,7 @@ class CharacterDetailViewController: UIViewController {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor)
             
         ])
         

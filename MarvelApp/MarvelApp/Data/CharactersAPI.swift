@@ -14,7 +14,6 @@ public enum CharactersAPI {
 
 extension CharactersAPI: BaseAPI {
     
-    
     public var baseURL: String {
         switch self {
         case .getCharacters, .getCharacterById:
@@ -39,8 +38,8 @@ extension CharactersAPI: BaseAPI {
     }
     
     public var parameters: Parameters? {
-        let ts = String(Int(NSTimeIntervalSince1970))
-        let stringToBeHashed = "\(ts)\(NetworkConstants.ParameterValues.privateKey)\(NetworkConstants.ParameterValues.publicKey)"
+        let timestamp = String(Int(NSTimeIntervalSince1970))
+        let stringToBeHashed = "\(timestamp)\(NetworkConstants.ParameterValues.privateKey)\(NetworkConstants.ParameterValues.publicKey)"
         let hash = stringToBeHashed.MD5()
         switch self {
         case .getCharacters(let offset):
@@ -59,7 +58,7 @@ extension CharactersAPI: BaseAPI {
         }
     }
     
-    public var headers: [String : String]? {
+    public var headers: [String: String]? {
         return nil
     }
 }
