@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  MarvelApp
+
+  Created by Estefania Fernandez on 18/4/22.
+  
+*/
+
+"error.title" = "Error";
+"error.invalid.request"  = "Invalid request";
+"error.parsing" = "The data couldn't be read because it isn't in the correct format";
+"error.no.internet" = "You don't seem to have an active internet connection. Please check your connection and try  again later";
+"error.unauthorized" = "The serveer could not verify that you are authorized to access the document requested";
+"error.not.found" = "The resource requested could not be found";
+"error.unknown" = "An error has occurred. Please try again later";

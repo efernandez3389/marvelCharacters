@@ -71,20 +71,20 @@ public class CharacterListViewModel {
         if let error = error as? MarvelError {
             switch error {
             case .invalidRequest:
-                errorMessage = "Invalid request"
+                errorMessage =  NSLocalizedString("error.invalid.request", comment: "")
             case .parsingError:
-                errorMessage = "Parsing error"
+                errorMessage =  NSLocalizedString("error.parsing", comment: "")
             case .noInternet:
-                errorMessage = "No internet"
+                errorMessage =  NSLocalizedString("error.no.internet", comment: "")
             case .unauthorized:
-                errorMessage = "Unauthorized"
+                errorMessage =  NSLocalizedString("error.unauthorized", comment: "")
             case .notFound:
-                errorMessage = "Not found"
+                errorMessage =  NSLocalizedString("error.not.found", comment: "")
             case .unknown:
-                errorMessage = "Unknown"
+                errorMessage = NSLocalizedString("error.unknown", comment: "")
             }
         } else {
-            errorMessage = "Unknown"
+            errorMessage = NSLocalizedString("error.unknown", comment: "")
         }
         
         self._error.onNext(errorMessage)
