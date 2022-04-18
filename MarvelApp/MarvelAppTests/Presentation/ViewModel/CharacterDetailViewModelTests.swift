@@ -40,20 +40,14 @@ class CharacterDetailViewModelTests: XCTestCase {
         // when
         viewModel.getCharacterById()
         
-        
         //  then
         waitForExpectations(timeout: 5, handler: nil)
         
-        XCTAssertEqual(try viewModel._characters.value().count
-                       , 1)
-        XCTAssertEqual(try viewModel._characters.value().first?.id
-                       , characters.data.results.first?.id)
-        XCTAssertEqual(try viewModel._characters.value().first?.name
-                       , characters.data.results.first?.name)
-        XCTAssertEqual(try viewModel._characters.value().first?.description
-                       , characters.data.results.first?.description)
-        XCTAssertEqual(try viewModel._characters.value().first?.thumbnail.path
-                       , characters.data.results.first?.thumbnail.path)
+        XCTAssertEqual(try viewModel._characters.value().count, 1)
+        XCTAssertEqual(try viewModel._characters.value().first?.id, characters.data.results.first?.id)
+        XCTAssertEqual(try viewModel._characters.value().first?.name, characters.data.results.first?.name)
+        XCTAssertEqual(try viewModel._characters.value().first?.description, characters.data.results.first?.description)
+        XCTAssertEqual(try viewModel._characters.value().first?.thumbnail.path, characters.data.results.first?.thumbnail.path)
     }
     
     func test_whenFetchCharactersReturnsError_thenViewModelContainsError() {
