@@ -1,26 +1,23 @@
 # README #
 
-Se ha decididoo realizar la aplicación bajo una arquitiactura clean+MVVM. De esta forma, hemos separado el código en tres capas: 
-* Domain (lógica de negocio)
-* Data (repositorio de datos)
-* Presentation (Capa visual bajo MVVM)
+We have decided to build the app under a clean+MVVM architecture. This way, we have separated the code into three different layers: 
+* Domain (business logic)
+* Data (data repository)
+* Presentation (UI layer using MVVM)
 
-Además se han utilizado diiferentes framworks para ayudarnos a llevar a cabo el proceso: 
+We 've also using different frameworks to help us during the development: 
 * Alamofire (http requests)
-* RxSwift (binding entre view controllers y view models)
-* SDWebImage (gestión y descarga de imagenes)
-
+* RxSwift (binding between view controllers and view models)
+* SDWebImage (manage and downloads images)
+* SwiftLint (code style)
 
 
 ### TO DO / IMPROVEMENTS ###
+* Add Unit Tests
+* Add UI Tests
+* Add Snapshot testing
+* Add sonarqube for code review
 
-* Añadir Unit Tests
-* Añadir UI Tests
-* Añadir Snapshot testing
-* Añadir swiftlint para mejorar el estilo de codigo
-* Añadir sonarqube para revision de codigo
-
-
-* Implementar un buscador de personajes
-* Implementar posibilidad de ordenar la lista en funcion de diferentes factores
-* Añadir información de comics, eventos, series e historias de los personajes
+* Add character search
+* Add character ordering
+* Add comic, events, series and/or character stories
