@@ -96,6 +96,11 @@ class CharacterListViewController: UIViewController {
         viewModel.characters.drive(onNext: {[unowned self] (_) in
             self.charactersTableView.reloadData()
         }).disposed(by: disposeBag)
+        
+        viewModel.error.drive(onNext: { (error) in
+            guard !error.isEmpty else { return }
+            self.showAlert(title: "Error", message: error)
+        }).disposed(by: disposeBag)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

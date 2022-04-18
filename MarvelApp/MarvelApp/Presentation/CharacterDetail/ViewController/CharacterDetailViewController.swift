@@ -124,5 +124,10 @@ class CharacterDetailViewController: UIViewController {
         viewModel.imageURLString.drive(onNext: { (_imageURLString) in
             self.characterImageView.sd_setImage(with: URL(string: _imageURLString ?? ""))
         }).disposed(by: disposeBag)
+        
+        viewModel.error.drive(onNext: { (error) in
+            guard !error.isEmpty else { return }
+            self.showAlert(title: "Error", message: error)
+        }).disposed(by: disposeBag)
     }
 }

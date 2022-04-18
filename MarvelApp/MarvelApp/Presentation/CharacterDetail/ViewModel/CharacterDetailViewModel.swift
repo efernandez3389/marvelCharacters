@@ -20,6 +20,7 @@ public class CharacterDetailViewModel {
     public let _characters = BehaviorSubject<[Character]>(value: [])
     private let _isLoading =  BehaviorSubject<Bool>(value: false)
     private let _imageURLString =  BehaviorRelay<String?>(value: nil)
+    private let _error =  BehaviorSubject<String>(value: "")
     
     var characters: Driver<[Character]> {
         return _characters.asDriver(onErrorJustReturn: [])
@@ -33,6 +34,10 @@ public class CharacterDetailViewModel {
         return _imageURLString.asDriver(onErrorJustReturn: nil)
     }
     
+    var error: Driver<String> {
+        return _error.asDriver(onErrorJustReturn: "")
+    }
+    
     public init(characterId: Int, getCharacterByIdUseCase: GetCharacterByIdUseCaseProtocol = GetCharacterByIdUseCase()) {
         self.characterId = characterId
         self.getCharacterByIdUseCase = getCharacterByIdUseCase
@@ -40,8 +45,13 @@ public class CharacterDetailViewModel {
     }
     
     private func subscribeForFetch() {
-        fetch.withLatestFrom(Observable.combineLatest(isLoading.asObservable(), characters.asObservable(), imageURLString.asObservable()))
-            .subscribe(onNext: {  (isLoading, _, _) in
+        fetch.withLatestFrom(Observable.combineLatest(
+            isLoading.asObservable(),
+            characters.asObservable(),
+            imageURLString.asObservable(),
+            error.asObservable()
+        ))
+            .subscribe(onNext: {  (isLoading, _, _, _) in
                 guard !isLoading else {return}
                 self.getCharacterById()
             }).disposed(by: disposeBag)
@@ -57,7 +67,8 @@ public class CharacterDetailViewModel {
                 self._characters.onNext(response.data.results)
                 self._isLoading.onNext(false)
             case .failure(let error):
-                print("ERROR")
+                self.handle(error: error)
+                self._isLoading.onNext(false)
             }
         }
     }
@@ -67,5 +78,29 @@ public class CharacterDetailViewModel {
             return value
         }
         return []
+    }
+    
+    private func handle(error: Error) {
+        var errorMessage = ""
+        if let error = error as? MarvelError {
+            switch error {
+            case .invalidRequest:
+                errorMessage = "Invalid request"
+            case .parsingError:
+                errorMessage = "Parsing error"
+            case .noInternet:
+                errorMessage = "No internet"
+            case .unauthorized:
+                errorMessage = "Unauthorized"
+            case .notFound:
+                errorMessage = "Not found"
+            case .unknown:
+                errorMessage = "Unknown"
+            }
+        } else {
+            errorMessage = "Unknown"
+        }
+        
+        self._error.onNext(errorMessage)
     }
 }
