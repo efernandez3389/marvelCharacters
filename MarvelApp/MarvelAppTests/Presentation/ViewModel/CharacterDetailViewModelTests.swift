@@ -63,6 +63,6 @@ class CharacterDetailViewModelTests: XCTestCase {
         // then
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(try viewModel._characters.value().count, 0)
-        
+        XCTAssertNotNil(viewModel.error)
     }
 }

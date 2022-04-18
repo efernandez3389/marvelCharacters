@@ -72,5 +72,6 @@ class CharacterListVewModelTests: XCTestCase {
         // then
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(viewModel.numberOfCharacters, 0)
+        XCTAssertNotNil(viewModel.error)
     }
 }
