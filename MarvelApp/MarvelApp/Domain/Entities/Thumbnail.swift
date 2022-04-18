@@ -18,6 +18,11 @@ public struct Thumbnail: Codable {
     let path: String
     let fileExtension: String
     
+    public init(path: String, fileExtension: String) {
+        self.path = path
+        self.fileExtension = fileExtension
+    }
+    
     public func getUrl(quality: ThumbnailQuality) -> URL? {
         let httpsPath = "https" + path.dropFirst(4) + quality.rawValue
         return URL(string: "\(httpsPath).\(fileExtension)")

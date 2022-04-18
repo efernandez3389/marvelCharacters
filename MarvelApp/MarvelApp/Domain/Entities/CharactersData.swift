@@ -9,4 +9,8 @@ import Foundation
 
 public struct CharactersData: Codable {
     public let results: [Character]
+    
+    public init(results: [Character]) {
+        self.results = results
+    }
 }

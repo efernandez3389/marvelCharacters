@@ -47,7 +47,6 @@ public class CharacterListViewModel {
         getCharactersUseCase.execute(offset: numberOfCharacters) { (result)  in
             switch result {
             case .success(let response):
-                print("SUCCESS")
                 self._characters.onNext(self.getCharactersValue() + response.data.results)
                 self._isLoading.onNext(false)
             case .failure(let error):

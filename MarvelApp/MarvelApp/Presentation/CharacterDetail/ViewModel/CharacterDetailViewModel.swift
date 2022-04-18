@@ -47,7 +47,7 @@ public class CharacterDetailViewModel {
             }).disposed(by: disposeBag)
     }
     
-    private func getCharacterById() {
+    public func getCharacterById() {
         _isLoading.onNext(true)
         getCharacterByIdUseCase.execute(id: self.characterId) { (result)  in
             switch result {

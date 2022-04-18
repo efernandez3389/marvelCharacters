@@ -9,4 +9,8 @@ import Foundation
 
 public struct CharactersAPIResponse: Codable {
     public let data: CharactersData
+    
+    public init(data: CharactersData) {
+        self.data = data
+    }
 }
