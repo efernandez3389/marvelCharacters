@@ -17,13 +17,13 @@ public class CharacterDetailViewModel {
     public let fetch = PublishSubject<()>()
     private let disposeBag = DisposeBag()
     
-    public let _characters = BehaviorSubject<[Character]>(value: [])
+    public let _characters = BehaviorSubject<Character?>(value: nil)
     private let _isLoading =  BehaviorSubject<Bool>(value: false)
     private let _imageURLString =  BehaviorRelay<String?>(value: nil)
     private let _error =  BehaviorSubject<String>(value: "")
     
-    var characters: Driver<[Character]> {
-        return _characters.asDriver(onErrorJustReturn: [])
+    var characters: Driver<Character?> {
+        return _characters.asDriver(onErrorJustReturn: nil)
     }
     
     var isLoading: Driver<Bool> {
@@ -38,7 +38,7 @@ public class CharacterDetailViewModel {
         return _error.asDriver(onErrorJustReturn: "")
     }
     
-    public init(characterId: Int, getCharacterByIdUseCase: GetCharacterByIdUseCaseProtocol = GetCharacterByIdUseCase()) {
+    public init(characterId: Int, getCharacterByIdUseCase: GetCharacterByIdUseCaseProtocol) {
         self.characterId = characterId
         self.getCharacterByIdUseCase = getCharacterByIdUseCase
         subscribeForFetch()
@@ -63,8 +63,8 @@ public class CharacterDetailViewModel {
             switch result {
             case .success(let response):
                 
-                self._imageURLString.accept(response.data.results.first?.thumbnail.getUrlString(quality: .landscape)) 
-                self._characters.onNext(response.data.results)
+                self._imageURLString.accept(response.thumbnail.getUrlString(quality: .landscape))
+                self._characters.onNext(response)
                 self._isLoading.onNext(false)
             case .failure(let error):
                 self.handle(error: error)
@@ -73,12 +73,12 @@ public class CharacterDetailViewModel {
         }
     }
     
-    private func getCharactersValue() -> [Character] {
-        if let value = try? _characters.value() {
-            return value
-        }
-        return []
-    }
+//    private func getCharactersValue() -> [Character] {
+//        if let value = try? _characters.value() {
+//            return value
+//        }
+//        return []
+//    }
     
     private func handle(error: Error) {
         var errorMessage = ""

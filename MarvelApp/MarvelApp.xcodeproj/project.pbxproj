@@ -17,6 +17,8 @@
 		5B003F77280D9F9D0067095B /* CharacterDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B003F72280D9F9D0067095B /* CharacterDetailViewModelTests.swift */; };
 		5B003F78280D9F9D0067095B /* CharacterListVewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B003F73280D9F9D0067095B /* CharacterListVewModelTests.swift */; };
 		5B3C832F27FEF84F00E3D84C /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C832E27FEF84F00E3D84C /* CharacterDetailViewModel.swift */; };
+		5BA507C2280EF64000E2D41B /* DefaultCharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA507C1280EF64000E2D41B /* DefaultCharacterRepository.swift */; };
+		5BA507C5280EF6E800E2D41B /* CharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA507C4280EF6E800E2D41B /* CharacterRepository.swift */; };
 		5BD9268F27FD755200C3CCAD /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD9268E27FD755200C3CCAD /* CharacterListViewController.swift */; };
 		5BD9269427FD755400C3CCAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BD9269327FD755400C3CCAD /* Assets.xcassets */; };
 		5BD9269727FD755400C3CCAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD9269527FD755400C3CCAD /* LaunchScreen.storyboard */; };
@@ -76,6 +78,8 @@
 		5B003F73280D9F9D0067095B /* CharacterListVewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterListVewModelTests.swift; sourceTree = "<group>"; };
 		5B3C832E27FEF84F00E3D84C /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		5B6996D40DBF0908E7A1203A /* Pods-MarvelAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppTests.release.xcconfig"; path = "Target Support Files/Pods-MarvelAppTests/Pods-MarvelAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		5BA507C1280EF64000E2D41B /* DefaultCharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCharacterRepository.swift; sourceTree = "<group>"; };
+		5BA507C4280EF6E800E2D41B /* CharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepository.swift; sourceTree = "<group>"; };
 		5BD9268727FD755200C3CCAD /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD9268A27FD755200C3CCAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BD9268E27FD755200C3CCAD /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +197,30 @@
 			path = CharacterDetail;
 			sourceTree = "<group>";
 		};
+		5BA507BF280EF5C900E2D41B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				5BA507C1280EF64000E2D41B /* DefaultCharacterRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		5BA507C0280EF5DA00E2D41B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5BD926C427FD848B00C3CCAD /* CharactersAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		5BA507C3280EF6CC00E2D41B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				5BA507C4280EF6E800E2D41B /* CharacterRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		5BD9267E27FD755200C3CCAD = {
 			isa = PBXGroup;
 			children = (
@@ -282,7 +310,8 @@
 		5BD926C327FD841C00C3CCAD /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				5BD926C427FD848B00C3CCAD /* CharactersAPI.swift */,
+				5BA507C0280EF5DA00E2D41B /* Network */,
+				5BA507BF280EF5C900E2D41B /* Repositories */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -290,6 +319,7 @@
 		5BD926C627FD8D0C00C3CCAD /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				5BA507C3280EF6CC00E2D41B /* Repositories */,
 				5BD926D127FDA4E500C3CCAD /* Entities */,
 				5BD926C727FD8D1200C3CCAD /* UseCases */,
 			);
@@ -710,6 +740,7 @@
 				5BD926F727FEE28400C3CCAD /* CharacterDetailViewController.swift in Sources */,
 				5BD926BD27FD7A1400C3CCAD /* BaseAPI.swift in Sources */,
 				5BD926E327FDD83E00C3CCAD /* AppDelegate.swift in Sources */,
+				5BA507C5280EF6E800E2D41B /* CharacterRepository.swift in Sources */,
 				5BD926C927FD8D2A00C3CCAD /* GetCharactersUseCase.swift in Sources */,
 				5B3C832F27FEF84F00E3D84C /* CharacterDetailViewModel.swift in Sources */,
 				5BD926E527FDDB2000C3CCAD /* SceneDelegate.swift in Sources */,
@@ -722,6 +753,7 @@
 				5BD926E227FDD5B100C3CCAD /* AppFlowCoordinator.swift in Sources */,
 				5BD926C527FD848B00C3CCAD /* CharactersAPI.swift in Sources */,
 				5BD926D327FDA5C400C3CCAD /* CharactersAPIResponse.swift in Sources */,
+				5BA507C2280EF64000E2D41B /* DefaultCharacterRepository.swift in Sources */,
 				5BD926EC27FE1D3000C3CCAD /* Thumbnail.swift in Sources */,
 				5BD926EF27FED31000C3CCAD /* CustomNavigationBar.swift in Sources */,
 				5BD926DF27FDACEA00C3CCAD /* CharacterListViewModel.swift in Sources */,

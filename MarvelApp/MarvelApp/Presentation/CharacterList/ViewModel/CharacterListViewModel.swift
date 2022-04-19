@@ -31,7 +31,7 @@ public class CharacterListViewModel {
         return _error.asDriver(onErrorJustReturn: "")
     }
     
-    public init(getCharactersUseCase: GetCharactersUseCaseProtocol = GetCharactersUseCase(), appNavigator: AppNavigator) {
+    public init(getCharactersUseCase: GetCharactersUseCaseProtocol, appNavigator: AppNavigator) {
         self.getCharactersUseCase = getCharactersUseCase
         self.appNavigator = appNavigator
         subscribeForFetch()
@@ -50,7 +50,7 @@ public class CharacterListViewModel {
         getCharactersUseCase.execute(offset: numberOfCharacters) { (result)  in
             switch result {
             case .success(let response):
-                self._characters.onNext(self.getCharactersValue() + response.data.results)
+                self._characters.onNext(self.getCharactersValue() + response)
                 self._isLoading.onNext(false)
             case .failure(let error):
                 self.handle(error: error)

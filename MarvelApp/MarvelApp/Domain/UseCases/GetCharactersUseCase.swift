@@ -8,18 +8,20 @@
 import Foundation
 
 public protocol GetCharactersUseCaseProtocol {
-    func execute(offset: Int, completionHandler: @escaping (Result<CharactersAPIResponse, Error>) -> Void)
+    func execute(offset: Int, completionHandler: @escaping (Result<[Character], Error>) -> Void)
 }
 
-public class GetCharactersUseCase: APIService<CharactersAPI>, GetCharactersUseCaseProtocol {
+public class GetCharactersUseCase: GetCharactersUseCaseProtocol {
     
-    public override init() {
-        super.init()
+    private let characterRepository: CharacterRepository
+    
+    init(characterRepository: CharacterRepository) {
+        self.characterRepository = characterRepository
     }
     
-    public func execute(offset: Int, completionHandler: @escaping (Result<CharactersAPIResponse, Error>) -> Void) {
-        self.fetchData(target: .getCharacters(offset: offset), responseClass: CharactersAPIResponse.self) { (result) in
+    public func execute(offset: Int, completionHandler: @escaping (Result<[Character], Error>) -> Void) {
+        return characterRepository.fetchCharacters(offset: offset, completionHandler: { result in
             completionHandler(result)
-        }
+        })
     }
 }

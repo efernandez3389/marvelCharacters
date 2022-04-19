@@ -117,8 +117,8 @@ class CharacterDetailViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.characters.drive(onNext: {[unowned self] (characters) in
-            self.characterNameLabel.text = characters.first?.name
-            self.characterDescriptionLabel.text = characters.first?.description
+            self.characterNameLabel.text = characters?.name
+            self.characterDescriptionLabel.text = characters?.description
         }).disposed(by: disposeBag)
         
         viewModel.imageURLString.drive(onNext: { (_imageURLString) in
