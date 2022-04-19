@@ -10,11 +10,12 @@ import MarvelApp
 import XCTest
 
 class GetCharactersUseCaseMock: GetCharactersUseCaseProtocol {
+    
     var expectation: XCTestExpectation?
     var error: Error?
-    var characters: CharactersAPIResponse?
+    var characters: [Character]?
     
-    func execute(offset: Int, completionHandler: @escaping (Result<CharactersAPIResponse, Error>) -> Void) {
+    func execute(offset: Int, completionHandler: @escaping (Result<[Character], Error>) -> Void) {
         if let error = error {
             completionHandler(.failure(error))
         } else {

@@ -10,17 +10,19 @@ import MarvelApp
 import XCTest
 
 class GetCharacterByIdUseCaseMock: GetCharacterByIdUseCaseProtocol {
+    
     var expectation: XCTestExpectation?
     var error: Error?
-    var characters: CharactersAPIResponse?
+    var character: Character?
     
-    func execute(id: Int, completionHandler: @escaping (Result<CharactersAPIResponse, Error>) -> Void) {
+    func execute(id: Int, completionHandler: @escaping (Result<Character, Error>) -> Void) {
         if let error = error {
             completionHandler(.failure(error))
         } else {
-            completionHandler(.success(characters!))
+            completionHandler(.success(character!))
         }
         
         expectation?.fulfill()
     }
+
 }

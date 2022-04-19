@@ -14,15 +14,11 @@ class CharacterListVewModelTests: XCTestCase {
         case someError
     }
     
-    let characters: CharactersAPIResponse = {
-        CharactersAPIResponse(
-            data: CharactersData(
-                results: [
-                Character(id: 123, name: "Name 1", description: "Desc 1", thumbnail: Thumbnail(path: "path", fileExtension: "png")),
-                Character(id: 321, name: "Name 2", description: "Desc 2", thumbnail: Thumbnail(path: "path2", fileExtension: "png"))
-                ]
-            )
-        )
+    let characters: [Character] = {
+        [
+            Character(id: 123, name: "Name 1", description: "Desc 1", thumbnail: Thumbnail(path: "path", fileExtension: "png")),
+            Character(id: 321, name: "Name 2", description: "Desc 2", thumbnail: Thumbnail(path: "path2", fileExtension: "png"))
+        ]
     }()
     
     override func setUpWithError() throws {
@@ -46,17 +42,17 @@ class CharacterListVewModelTests: XCTestCase {
         
         XCTAssertEqual(viewModel.numberOfCharacters, 2)
         
-        XCTAssertEqual(viewModel.characterAtIndex(index: 0).id, characters.data.results[0].id)
-        XCTAssertEqual(viewModel.characterAtIndex(index: 1).id, characters.data.results[1].id)
+        XCTAssertEqual(viewModel.characterAtIndex(index: 0).id, characters[0].id)
+        XCTAssertEqual(viewModel.characterAtIndex(index: 1).id, characters[1].id)
         
-        XCTAssertEqual(viewModel.characterAtIndex(index: 0).name, characters.data.results[0].name)
-        XCTAssertEqual(viewModel.characterAtIndex(index: 1).name, characters.data.results[1].name)
+        XCTAssertEqual(viewModel.characterAtIndex(index: 0).name, characters[0].name)
+        XCTAssertEqual(viewModel.characterAtIndex(index: 1).name, characters[1].name)
         
-        XCTAssertEqual(viewModel.characterAtIndex(index: 0).description, characters.data.results[0].description)
-        XCTAssertEqual(viewModel.characterAtIndex(index: 1).description, characters.data.results[1].description)
+        XCTAssertEqual(viewModel.characterAtIndex(index: 0).description, characters[0].description)
+        XCTAssertEqual(viewModel.characterAtIndex(index: 1).description, characters[1].description)
         
-        XCTAssertEqual(viewModel.characterAtIndex(index: 0).thumbnail.path, characters.data.results[0].thumbnail.path)
-        XCTAssertEqual(viewModel.characterAtIndex(index: 1).thumbnail.path, characters.data.results[1].thumbnail.path)
+        XCTAssertEqual(viewModel.characterAtIndex(index: 0).thumbnail.path, characters[0].thumbnail.path)
+        XCTAssertEqual(viewModel.characterAtIndex(index: 1).thumbnail.path, characters[1].thumbnail.path)
     }
     
     func test_whenFetchCharactersReturnsError_thenViewModelContainsError() {
