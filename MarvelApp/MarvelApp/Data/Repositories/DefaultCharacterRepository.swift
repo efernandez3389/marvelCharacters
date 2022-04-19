@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DefaultCharacterRepository: APIService<CharactersAPI>,  CharacterRepository {
+final class DefaultCharacterRepository: APIService<CharactersAPI>, CharacterRepository {
     func fetchCharacters(offset: Int, completionHandler: @escaping (Result<[Character], Error>) -> Void) {
         self.fetchData(target: .getCharacters(offset: offset), responseClass: CharactersAPIResponse.self) { (result) in
             switch result {
