@@ -9,10 +9,10 @@ import Foundation
 
 final class DefaultCharacterRepository: APIService<CharactersAPI>, CharacterRepository {
     func fetchCharacters(offset: Int, completionHandler: @escaping (Result<[Character], MarvelError>) -> Void) {
-        self.fetchData(target: .getCharacters(offset: offset), responseClass: CharactersAPIResponse.self) { (result) in
+        self.fetchData(target: .getCharacters(offset: offset), responseClass: CharactersAPIResponseDTO.self) { (result) in
             switch result {
             case .success(let response):
-                completionHandler(.success(response.data.results))
+                completionHandler(.success(response.data.results.map {$0.toDomain()}))
             case .failure(let error):
                 completionHandler(.failure(error))
             }
@@ -20,11 +20,11 @@ final class DefaultCharacterRepository: APIService<CharactersAPI>, CharacterRepo
     }
     
     func fetchCharacterById(id: Int, completionHandler: @escaping (Result<Character, MarvelError>) -> Void) {
-        self.fetchData(target: .getCharacterById(id: id), responseClass: CharactersAPIResponse.self) { (result) in
+        self.fetchData(target: .getCharacterById(id: id), responseClass: CharactersAPIResponseDTO.self) { (result) in
             switch result {
             case .success(let response):
                 if let character = response.data.results.first {
-                    completionHandler(.success(character))
+                    completionHandler(.success(character.toDomain()))
                 } else {
                     completionHandler(.failure(MarvelError.notFound))
                 }

@@ -28,6 +28,7 @@ public class APIService<T: BaseAPI> {
                     completionHandler(.failure(MarvelError.parsingError))
                     return
                 }
+                
                 guard let responseObj = try? JSONDecoder().decode(M.self, from: jsonData) else {
                     completionHandler(.failure(MarvelError.parsingError))
                     return
