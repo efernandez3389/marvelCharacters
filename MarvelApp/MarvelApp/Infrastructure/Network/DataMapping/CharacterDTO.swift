@@ -12,13 +12,6 @@ public struct CharacterDTO: Codable {
     public let name: String
     public let description: String
     public let thumbnail: ThumbnailDTO
-    
-    public init(id: Int, name: String, description: String, thumbnail: ThumbnailDTO) {
-        self.id = id
-        self.name = name
-        self.description = description
-        self.thumbnail = thumbnail
-    }
 }
 
 extension CharacterDTO {

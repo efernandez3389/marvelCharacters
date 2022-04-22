@@ -9,7 +9,4 @@ import Foundation
 
 public struct CharactersDataDTO: Codable {
     public let results: [CharacterDTO]
-    public init(results: [CharacterDTO]) {
-        self.results = results
-    }
 }

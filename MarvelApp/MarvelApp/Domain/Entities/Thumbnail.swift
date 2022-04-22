@@ -14,7 +14,7 @@ public enum ThumbnailQuality: String {
     case fullSize = ""
 }
 
-public struct Thumbnail: Codable {
+public struct Thumbnail {
     let path: String
     let fileExtension: String
     
@@ -31,12 +31,5 @@ public struct Thumbnail: Codable {
     public func getUrlString(quality: ThumbnailQuality) -> String {
         let httpsPath = "https" + path.dropFirst(4) + quality.rawValue
         return "\(httpsPath).\(fileExtension)"
-    }
-}
-
-extension Thumbnail {
-    public enum CodingKeys: String, CodingKey {
-        case path = "path"
-        case fileExtension = "extension"
     }
 }

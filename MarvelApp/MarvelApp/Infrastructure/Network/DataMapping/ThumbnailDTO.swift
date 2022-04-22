@@ -10,11 +10,6 @@ import Foundation
 public struct ThumbnailDTO: Codable {
     let path: String
     let fileExtension: String
-    
-    public init(path: String, fileExtension: String) {
-        self.path = path
-        self.fileExtension = fileExtension
-    }
 }
 
 extension ThumbnailDTO {

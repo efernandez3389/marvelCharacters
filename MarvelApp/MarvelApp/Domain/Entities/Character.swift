@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Character: Codable {
+public struct Character {
     public let id: Int
     public let name: String
     public let description: String
