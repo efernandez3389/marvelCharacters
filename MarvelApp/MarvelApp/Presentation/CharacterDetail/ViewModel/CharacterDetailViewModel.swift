@@ -73,13 +73,6 @@ public class CharacterDetailViewModel {
         }
     }
     
-//    private func getCharactersValue() -> [Character] {
-//        if let value = try? _characters.value() {
-//            return value
-//        }
-//        return []
-//    }
-    
     private func handle(error: Error) {
         var errorMessage = ""
         if let error = error as? MarvelError {
