@@ -16,7 +16,7 @@ struct Constants {
         static let scrollViewOffset: CGFloat = 180
     }
     
-    struct c {
+    struct Spacing {
         static let none: CGFloat = 0
         static let small: CGFloat = 8
         static let medium: CGFloat = 16

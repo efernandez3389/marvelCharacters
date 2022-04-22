@@ -10,13 +10,13 @@ import Foundation
 
 public class APIService<T: BaseAPI> {
     
-    func fetchData<M: Decodable>(target: T, responseClass: M.Type, completionHandler: @escaping (Result<M, Error>) -> Void) {
+    func fetchData<M: Decodable>(target: T, responseClass: M.Type, completionHandler: @escaping (Result<M, MarvelError>) -> Void) {
         let method = target.method
         let headers = HTTPHeaders(target.headers ?? [:])
         let parameters = target.parameters
         AF.request(target.baseURL + target.path, method: method, parameters: parameters, headers: headers).responseJSON { (response) in
             guard let statusCode = response.response?.statusCode else {
-                completionHandler(.failure(NSError()))
+                completionHandler(.failure(MarvelError.unknown))
                 return
             }
             if statusCode == 200 {

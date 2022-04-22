@@ -8,7 +8,7 @@
 import Foundation
 
 final class DefaultCharacterRepository: APIService<CharactersAPI>, CharacterRepository {
-    func fetchCharacters(offset: Int, completionHandler: @escaping (Result<[Character], Error>) -> Void) {
+    func fetchCharacters(offset: Int, completionHandler: @escaping (Result<[Character], MarvelError>) -> Void) {
         self.fetchData(target: .getCharacters(offset: offset), responseClass: CharactersAPIResponse.self) { (result) in
             switch result {
             case .success(let response):
@@ -19,7 +19,7 @@ final class DefaultCharacterRepository: APIService<CharactersAPI>, CharacterRepo
         }
     }
     
-    func fetchCharacterById(id: Int, completionHandler: @escaping (Result<Character, Error>) -> Void) {
+    func fetchCharacterById(id: Int, completionHandler: @escaping (Result<Character, MarvelError>) -> Void) {
         self.fetchData(target: .getCharacterById(id: id), responseClass: CharactersAPIResponse.self) { (result) in
             switch result {
             case .success(let response):

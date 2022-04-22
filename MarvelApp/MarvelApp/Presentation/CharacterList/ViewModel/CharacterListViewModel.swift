@@ -53,7 +53,7 @@ public class CharacterListViewModel {
                 self._characters.onNext(self.getCharactersValue() + response)
                 self._isLoading.onNext(false)
             case .failure(let error):
-                self.handle(error: error)
+                self._error.onNext(error.localizedErrorMessage)
                 self._isLoading.onNext(false)
             }
         }
@@ -64,30 +64,6 @@ public class CharacterListViewModel {
             return value
         }
         return []
-    }
-    
-    private func handle(error: Error) {
-        var errorMessage = ""
-        if let error = error as? MarvelError {
-            switch error {
-            case .invalidRequest:
-                errorMessage =  "error.invalid.request".localized
-            case .parsingError:
-                errorMessage =  "error.parsing".localized
-            case .noInternet:
-                errorMessage =  "error.no.internet".localized
-            case .unauthorized:
-                errorMessage =  "error.unauthorized".localized
-            case .notFound:
-                errorMessage =  "error.not.found".localized
-            case .unknown:
-                errorMessage = "error.unknown".localized
-            }
-        } else {
-            errorMessage = "error.unknown".localized
-        }
-        
-        self._error.onNext(errorMessage)
     }
     
     var numberOfCharacters: Int {

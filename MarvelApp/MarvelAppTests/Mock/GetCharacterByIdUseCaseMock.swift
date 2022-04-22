@@ -15,7 +15,7 @@ class GetCharacterByIdUseCaseMock: GetCharacterByIdUseCaseProtocol {
     var error: Error?
     var character: Character?
     
-    func execute(id: Int, completionHandler: @escaping (Result<Character, Error>) -> Void) {
+    func execute(id: Int, completionHandler: @escaping (Result<Character, MarvelError>) -> Void) {
         if let error = error {
             completionHandler(.failure(error))
         } else {

@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol GetCharactersUseCaseProtocol {
-    func execute(offset: Int, completionHandler: @escaping (Result<[Character], Error>) -> Void)
+    func execute(offset: Int, completionHandler: @escaping (Result<[Character], MarvelError>) -> Void)
 }
 
 public class GetCharactersUseCase: GetCharactersUseCaseProtocol {
@@ -19,7 +19,7 @@ public class GetCharactersUseCase: GetCharactersUseCaseProtocol {
         self.characterRepository = characterRepository
     }
     
-    public func execute(offset: Int, completionHandler: @escaping (Result<[Character], Error>) -> Void) {
+    public func execute(offset: Int, completionHandler: @escaping (Result<[Character], MarvelError>) -> Void) {
         return characterRepository.fetchCharacters(offset: offset, completionHandler: { result in
             completionHandler(result)
         })
