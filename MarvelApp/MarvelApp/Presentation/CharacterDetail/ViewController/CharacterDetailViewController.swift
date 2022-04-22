@@ -88,24 +88,23 @@ class CharacterDetailViewController: UIViewController {
             characterImageView.topAnchor.constraint(equalTo: view.topAnchor),
             characterImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             characterImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            characterImageView.heightAnchor.constraint(equalToConstant: 300)
+            characterImageView.heightAnchor.constraint(equalToConstant: Constants.Size.imageHeight)
             
         ])
         
         characterNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             characterNameLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor),
-            characterNameLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 1),
+            characterNameLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
             characterNameLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
-            characterNameLabel.heightAnchor.constraint(equalToConstant: 50)
-            
+            characterNameLabel.heightAnchor.constraint(equalToConstant: Constants.Size.labelHeight)
         ])
         
         characterDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             characterDescriptionLabel.topAnchor.constraint(equalTo: characterNameLabel.bottomAnchor),
-            characterDescriptionLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 16),
-            characterDescriptionLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -16),
+            characterDescriptionLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: Constants.Spacing.medium),
+            characterDescriptionLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -Constants.Spacing.medium),
             characterDescriptionLabel.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor)
             
         ])
