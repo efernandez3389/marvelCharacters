@@ -38,23 +38,23 @@ extension CharactersAPI: BaseAPI {
     }
     
     public var parameters: Parameters? {
+        
         let timestamp = String(Int(NSTimeIntervalSince1970))
         let stringToBeHashed = "\(timestamp)\(NetworkConstants.ParameterValues.privateKey)\(NetworkConstants.ParameterValues.publicKey)"
         let hash = stringToBeHashed.MD5()
+        
+        var params: Parameters = [
+            NetworkConstants.ParameterKeys.apiKey: NetworkConstants.ParameterValues.publicKey,
+            NetworkConstants.ParameterKeys.hash: hash,
+            NetworkConstants.ParameterKeys.timestamp: NSTimeIntervalSince1970
+            ]
+        
         switch self {
         case .getCharacters(let offset):
-            return [
-                NetworkConstants.ParameterKeys.apiKey: NetworkConstants.ParameterValues.publicKey,
-                NetworkConstants.ParameterKeys.hash: hash,
-                NetworkConstants.ParameterKeys.timestamp: NSTimeIntervalSince1970,
-                "offset": offset
-            ]
+            params[NetworkConstants.ParameterKeys.offset] = offset
+            return params
         case .getCharacterById:
-            return [
-                NetworkConstants.ParameterKeys.apiKey: NetworkConstants.ParameterValues.publicKey,
-                NetworkConstants.ParameterKeys.hash: hash,
-                NetworkConstants.ParameterKeys.timestamp: NSTimeIntervalSince1970
-            ]
+            return params
         }
     }
     

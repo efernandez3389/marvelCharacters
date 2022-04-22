@@ -126,7 +126,7 @@ class CharacterDetailViewController: UIViewController {
         
         viewModel.error.drive(onNext: { (error) in
             guard !error.isEmpty else { return }
-            self.showAlert(title: "Error", message: error)
+            self.showAlert(title: "common.error".localized, message: error)
         }).disposed(by: disposeBag)
     }
 }

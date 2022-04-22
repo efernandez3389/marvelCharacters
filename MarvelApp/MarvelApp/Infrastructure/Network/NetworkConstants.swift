@@ -15,6 +15,7 @@ struct NetworkConstants {
         static let apiKey = "apikey"
         static let hash = "hash"
         static let timestamp = "ts"
+        static let offset = "offset"
     }
     
     struct ParameterValues {
