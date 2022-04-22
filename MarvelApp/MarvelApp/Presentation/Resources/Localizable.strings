@@ -13,3 +13,4 @@
 "error.unauthorized" = "The serveer could not verify that you are authorized to access the document requested";
 "error.not.found" = "The resource requested could not be found";
 "error.unknown" = "An error has occurred. Please try again later";
+"common.ok" = "OK"
