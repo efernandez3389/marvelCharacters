@@ -9,11 +9,6 @@ import XCTest
 @testable import MarvelApp
 
 class CharacterDetailViewModelTests: XCTestCase {
-    
-    private enum GetCharacterByIdUseCaseError: Error {
-        case someError
-    }
-    
     let character: Character = {
         Character(id: 123, name: "Name 1", description: "Desc 1", thumbnail: Thumbnail(path: "path", fileExtension: "png"))
     }()
@@ -47,7 +42,7 @@ class CharacterDetailViewModelTests: XCTestCase {
         // given
         let getCharacterByIdUseCaseMock = GetCharacterByIdUseCaseMock()
         getCharacterByIdUseCaseMock.expectation = self.expectation(description: "contains two characters")
-        getCharacterByIdUseCaseMock.error = GetCharacterByIdUseCaseError.someError
+        getCharacterByIdUseCaseMock.error = MarvelError.unknown
         let viewModel = CharacterDetailViewModel(characterId: 123, getCharacterByIdUseCase: getCharacterByIdUseCaseMock)
         
         // when

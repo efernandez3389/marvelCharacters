@@ -12,7 +12,7 @@ import XCTest
 class GetCharacterByIdUseCaseMock: GetCharacterByIdUseCaseProtocol {
     
     var expectation: XCTestExpectation?
-    var error: Error?
+    var error: MarvelError?
     var character: Character?
     
     func execute(id: Int, completionHandler: @escaping (Result<Character, MarvelError>) -> Void) {

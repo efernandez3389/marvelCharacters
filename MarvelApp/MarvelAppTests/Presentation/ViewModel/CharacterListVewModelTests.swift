@@ -10,10 +10,6 @@ import XCTest
 
 class CharacterListVewModelTests: XCTestCase {
     
-    private enum GetCharactersUseCaseError: Error {
-        case someError
-    }
-    
     let characters: [Character] = {
         [
             Character(id: 123, name: "Name 1", description: "Desc 1", thumbnail: Thumbnail(path: "path", fileExtension: "png")),
@@ -59,7 +55,7 @@ class CharacterListVewModelTests: XCTestCase {
         // given
         let getCharactersUseCaseMock = GetCharactersUseCaseMock()
         getCharactersUseCaseMock.expectation = self.expectation(description: "contains two characters")
-        getCharactersUseCaseMock.error = GetCharactersUseCaseError.someError
+        getCharactersUseCaseMock.error = MarvelError.unknown
         let viewModel = CharacterListViewModel(getCharactersUseCase: getCharactersUseCaseMock, appNavigator: AppFlowCoordinator())
         
         // when
