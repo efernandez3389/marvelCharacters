@@ -26,11 +26,11 @@ We've also used different frameworks to help us during the development:
 * Swift 5
 
 ### SETUP ###
-* Clone repository 
+* Clone repository: 
 git clone https://github.com/efernandez3389/marvelCharacters.git
-* Install dependencies
-Execute pod instaall inside project directory
-* Open workspace file
+* Install dependencies: 
+Execute pod install inside project directory
+* Open workspace file: 
 MarvelApp.xcworkspace
-* Have fun
+* Have fun!
 
