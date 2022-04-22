@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SDWebImage
+import SnapKit
 
 class CharacterDetailViewController: UIViewController {
     let disposeBag = DisposeBag()
@@ -75,39 +76,28 @@ class CharacterDetailViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        let layoutGuide = view.safeAreaLayoutGuide
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            activityIndicator.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor)
-            
-        ])
+        activityIndicator.snp.makeConstraints { (make) -> Void in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
         
-        characterImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            characterImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            characterImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            characterImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            characterImageView.heightAnchor.constraint(equalToConstant: Constants.Size.imageHeight)
-            
-        ])
+        characterImageView.snp.makeConstraints { (make) -> Void in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(Constants.Size.imageHeight)
+        }
         
-        characterNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            characterNameLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor),
-            characterNameLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            characterNameLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
-            characterNameLabel.heightAnchor.constraint(equalToConstant: Constants.Size.labelHeight)
-        ])
+        characterNameLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(characterImageView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(Constants.Size.labelHeight)
+        }
         
-        characterDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            characterDescriptionLabel.topAnchor.constraint(equalTo: characterNameLabel.bottomAnchor),
-            characterDescriptionLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: Constants.Spacing.medium),
-            characterDescriptionLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -Constants.Spacing.medium),
-            characterDescriptionLabel.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor)
-            
-        ])
+        characterDescriptionLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(characterNameLabel.snp.bottom)
+            make.leading.equalToSuperview().offset(Constants.Spacing.medium)
+            make.trailing.equalToSuperview().offset(-Constants.Spacing.medium)
+            make.bottom.equalToSuperview()
+        }
     }
     
     private func setupBindings() {

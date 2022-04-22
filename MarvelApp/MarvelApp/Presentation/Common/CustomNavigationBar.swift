@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class CustomNavigationBar: UIView {
 
@@ -40,20 +41,14 @@ class CustomNavigationBar: UIView {
         addSubview(backgroundView)
         addSubview(logoImageView)
         
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        backgroundView.snp.makeConstraints { (make) -> Void in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
         
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            logoImageView.heightAnchor.constraint(equalToConstant: 40),
-            logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            logoImageView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
-            logoImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        logoImageView.snp.makeConstraints { (make) -> Void in
+            make.top.equalToSuperview().offset(Constants.Size.logoHeight)
+            make.height.equalTo(Constants.Size.logoHeight)
+            make.centerX.bottom.equalToSuperview()
+        }
     }
 }

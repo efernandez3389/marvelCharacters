@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 
 class CharacterListViewController: UIViewController {
     let disposeBag = DisposeBag()
@@ -63,29 +64,20 @@ class CharacterListViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        let layoutGuide = view.safeAreaLayoutGuide
+        customNavigationBar.snp.makeConstraints { (make) -> Void in
+            make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(Constants.Size.navigationBarHeight)
+        }
         
-        customNavigationBar.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            customNavigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            customNavigationBar.topAnchor.constraint(equalTo: view.topAnchor),
-            customNavigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            customNavigationBar.heightAnchor.constraint(equalToConstant: Constants.Size.navigationBarHeight)
-        ])
+        charactersTableView.snp.makeConstraints { (make) -> Void in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(customNavigationBar.snp.bottom)
+        }
         
-        charactersTableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            charactersTableView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            charactersTableView.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor),
-            charactersTableView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
-            charactersTableView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor)
-        ])
-        
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            activityIndicator.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor)
-        ])
+        activityIndicator.snp.makeConstraints { (make) -> Void in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
     }
     
     func setupBindings() {

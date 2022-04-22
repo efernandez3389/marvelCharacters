@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SnapKit
 
 class CharacterTableViewCell: UITableViewCell {
 
@@ -45,22 +46,17 @@ class CharacterTableViewCell: UITableViewCell {
         addSubview(characterImageView)
         addSubview(characterNameLabel)
 
-        characterImageView.translatesAutoresizingMaskIntoConstraints = false
-        characterNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        characterImageView.snp.makeConstraints { (make) -> Void in
+            make.leading.top.equalToSuperview()
+            make.width.equalTo(Constants.Size.width)
+            make.height.equalTo(Constants.Size.height)
+        }
         
-        NSLayoutConstraint.activate([
-            characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Spacing.none),
-            characterImageView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Spacing.none),
-            characterImageView.widthAnchor.constraint(equalToConstant: Constants.Size.width),
-            characterImageView.heightAnchor.constraint(equalToConstant: Constants.Size.height)
-        ])
-        
-        NSLayoutConstraint.activate([
-            characterNameLabel.leadingAnchor.constraint(equalTo: characterImageView.trailingAnchor, constant: Constants.Spacing.medium),
-            characterNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Spacing.medium),
-            characterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Spacing.medium),
-            characterNameLabel.heightAnchor.constraint(equalToConstant: Constants.Size.height
-                                                      )
-        ])
+        characterNameLabel.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(characterImageView.snp.trailing).offset(Constants.Spacing.medium)
+            make.top.equalToSuperview().offset(Constants.Spacing.medium)
+            make.trailing.equalToSuperview().offset(-Constants.Spacing.medium)
+            make.height.equalTo(Constants.Size.height)
+        }
     }
 }

@@ -16,6 +16,7 @@ struct Constants {
         static let scrollViewOffset: CGFloat = 180
         static let imageHeight: CGFloat = 300
         static let labelHeight: CGFloat = 50
+        static let logoHeight: CGFloat = 40
     }
     
     struct Spacing {
