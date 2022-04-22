@@ -5,7 +5,7 @@ We have decided to build the app under a clean+MVVM architecture. This way, we h
 * Data (data repository)
 * Presentation (UI layer using MVVM)
 
-We 've also using different frameworks to help us during the development: 
+We've also used different frameworks to help us during the development: 
 * Alamofire (http requests)
 * RxSwift (binding between view controllers and view models)
 * SDWebImage (manage and downloads images)
@@ -13,11 +13,24 @@ We 've also using different frameworks to help us during the development:
 
 
 ### TO DO / IMPROVEMENTS ###
-* Add Unit Tests
 * Add UI Tests
 * Add Snapshot testing
-* Add sonarqube for code review
 
 * Add character search
 * Add character ordering
 * Add comic, events, series and/or character stories
+
+### REQUIREMENTS ###
+* XCode 12+
+* iOS 14.0+
+* Swift 5
+
+### SETUP ###
+* Clone repository 
+git clone https://github.com/efernandez3389/marvelCharacters.git
+* Install dependencies
+Execute pod instaall inside project directory
+* Open workspace file
+MarvelApp.xcworkspace
+* Have fun
+
