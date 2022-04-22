@@ -31,9 +31,9 @@ class CharacterDetailViewController: UIViewController {
     private let characterNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.backgroundColor = UIColor(red: 226.0/255, green: 0/255, blue: 26/255, alpha: 1.0)
-        label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.backgroundColor = Constants.Color.background
+        label.textColor = Constants.Color.lightText
+        label.font = UIFont.boldSystemFont(ofSize: Constants.FontSize.large)
         label.numberOfLines = 0
         return label
     }()
@@ -41,7 +41,7 @@ class CharacterDetailViewController: UIViewController {
     private let characterDescriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: Constants.FontSize.medium)
         label.numberOfLines = 0
         return label
     }()
@@ -61,7 +61,7 @@ class CharacterDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
-        view.backgroundColor = .white
+        view.backgroundColor = Constants.Color.lightBackground
         configureViewHierarchy()
         setupConstraints()
         setupBindings()

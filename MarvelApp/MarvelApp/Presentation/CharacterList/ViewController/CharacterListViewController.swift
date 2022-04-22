@@ -41,7 +41,7 @@ class CharacterListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = Constants.Color.lightBackground
         
         configureViewHierarchy()
         setupConstraints()
@@ -70,7 +70,7 @@ class CharacterListViewController: UIViewController {
             customNavigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customNavigationBar.topAnchor.constraint(equalTo: view.topAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            customNavigationBar.heightAnchor.constraint(equalToConstant: 100)
+            customNavigationBar.heightAnchor.constraint(equalToConstant: Constants.Size.navigationBarHeight)
         ])
         
         charactersTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -99,12 +99,12 @@ class CharacterListViewController: UIViewController {
         
         viewModel.error.drive(onNext: { (error) in
             guard !error.isEmpty else { return }
-            self.showAlert(title: "Error", message: error)
+            self.showAlert(title: "common.error".localized, message: error)
         }).disposed(by: disposeBag)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offset: CGFloat = 180
+        let offset: CGFloat = Constants.Size.scrollViewOffset
         if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height - offset) {
             viewModel.fetch.onNext(())
         }
@@ -123,7 +123,7 @@ extension CharacterListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        return Constants.Size.height
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

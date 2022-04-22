@@ -17,6 +17,7 @@
 		5B003F77280D9F9D0067095B /* CharacterDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B003F72280D9F9D0067095B /* CharacterDetailViewModelTests.swift */; };
 		5B003F78280D9F9D0067095B /* CharacterListVewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B003F73280D9F9D0067095B /* CharacterListVewModelTests.swift */; };
 		5B06CFC728129306005514C9 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CFC628129306005514C9 /* String+Localization.swift */; };
+		5B06CFC928129629005514C9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06CFC828129629005514C9 /* Constants.swift */; };
 		5B3C832F27FEF84F00E3D84C /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C832E27FEF84F00E3D84C /* CharacterDetailViewModel.swift */; };
 		5BA507C2280EF64000E2D41B /* DefaultCharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA507C1280EF64000E2D41B /* DefaultCharacterRepository.swift */; };
 		5BA507C5280EF6E800E2D41B /* CharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA507C4280EF6E800E2D41B /* CharacterRepository.swift */; };
@@ -78,6 +79,7 @@
 		5B003F72280D9F9D0067095B /* CharacterDetailViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModelTests.swift; sourceTree = "<group>"; };
 		5B003F73280D9F9D0067095B /* CharacterListVewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterListVewModelTests.swift; sourceTree = "<group>"; };
 		5B06CFC628129306005514C9 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		5B06CFC828129629005514C9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5B3C832E27FEF84F00E3D84C /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		5B6996D40DBF0908E7A1203A /* Pods-MarvelAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppTests.release.xcconfig"; path = "Target Support Files/Pods-MarvelAppTests/Pods-MarvelAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		5BA507C1280EF64000E2D41B /* DefaultCharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCharacterRepository.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				5B003F68280D94E50067095B /* UIViewController+Alert.swift */,
 				5B06CFC628129306005514C9 /* String+Localization.swift */,
+				5B06CFC828129629005514C9 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 				5BD926C927FD8D2A00C3CCAD /* GetCharactersUseCase.swift in Sources */,
 				5B3C832F27FEF84F00E3D84C /* CharacterDetailViewModel.swift in Sources */,
 				5BD926E527FDDB2000C3CCAD /* SceneDelegate.swift in Sources */,
+				5B06CFC928129629005514C9 /* Constants.swift in Sources */,
 				5BD926CE27FD925500C3CCAD /* String+MD5.swift in Sources */,
 				5B06CFC728129306005514C9 /* String+Localization.swift in Sources */,
 				5BD926E827FDE78800C3CCAD /* CharacterTableViewCell.swift in Sources */,

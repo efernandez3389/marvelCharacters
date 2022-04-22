@@ -20,7 +20,7 @@ class CharacterTableViewCell: UITableViewCell {
     private let characterNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: Constants.FontSize.medium)
         label.numberOfLines = 0
         return label
     }()
@@ -49,17 +49,18 @@ class CharacterTableViewCell: UITableViewCell {
         characterNameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            characterImageView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            characterImageView.widthAnchor.constraint(equalToConstant: 175),
-            characterImageView.heightAnchor.constraint(equalToConstant: 130)
+            characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Spacing.none),
+            characterImageView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Spacing.none),
+            characterImageView.widthAnchor.constraint(equalToConstant: Constants.Size.width),
+            characterImageView.heightAnchor.constraint(equalToConstant: Constants.Size.height)
         ])
         
         NSLayoutConstraint.activate([
-            characterNameLabel.leadingAnchor.constraint(equalTo: characterImageView.trailingAnchor, constant: 16),
-            characterNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            characterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            characterNameLabel.heightAnchor.constraint(equalToConstant: 130)
+            characterNameLabel.leadingAnchor.constraint(equalTo: characterImageView.trailingAnchor, constant: Constants.Spacing.medium),
+            characterNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Spacing.medium),
+            characterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Spacing.medium),
+            characterNameLabel.heightAnchor.constraint(equalToConstant: Constants.Size.height
+                                                      )
         ])
     }
 }
