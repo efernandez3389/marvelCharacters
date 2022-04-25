@@ -42,11 +42,11 @@ final class AppFlowCoordinator {
     }
     
     private func makeGetCharactersUseCase() -> GetCharactersUseCase {
-        return GetCharactersUseCase(characterRepository: DefaultCharacterRepository())
+        return GetCharactersUseCase()
     }
     
     private func makeGetCharacterByIdUseCase() -> GetCharacterByIdUseCase {
-        return GetCharacterByIdUseCase(characterRepository: DefaultCharacterRepository())
+        return GetCharacterByIdUseCase()
     }
 }
 

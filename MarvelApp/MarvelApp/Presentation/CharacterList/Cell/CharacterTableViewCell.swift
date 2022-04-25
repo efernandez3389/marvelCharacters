@@ -10,7 +10,8 @@ import SDWebImage
 import SnapKit
 
 class CharacterTableViewCell: UITableViewCell {
-
+    static let identifier = "CharacterTableViewCell"
+    
     private let characterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

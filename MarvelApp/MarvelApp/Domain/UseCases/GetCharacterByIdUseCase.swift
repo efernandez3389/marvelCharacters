@@ -13,12 +13,8 @@ public protocol GetCharacterByIdUseCaseProtocol {
 
 public class GetCharacterByIdUseCase: GetCharacterByIdUseCaseProtocol {
     
-    private let characterRepository: CharacterRepository
-    
-    init(characterRepository: CharacterRepository) {
-        self.characterRepository = characterRepository
-    }
-    
+    private let characterRepository = DefaultCharacterRepository()
+        
     public func execute(id: Int, completionHandler: @escaping (Result<Character, MarvelError>) -> Void) {
         return characterRepository.fetchCharacterById(id: id, completionHandler: { result in
             completionHandler(result)

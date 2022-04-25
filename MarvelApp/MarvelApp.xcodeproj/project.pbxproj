@@ -46,7 +46,7 @@
 		5BD926EA27FE1C5400C3CCAD /* CharacterTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926E927FE1C5400C3CCAD /* CharacterTableViewCellViewModel.swift */; };
 		5BD926EC27FE1D3000C3CCAD /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926EB27FE1D3000C3CCAD /* Thumbnail.swift */; };
 		5BD926EF27FED31000C3CCAD /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926EE27FED31000C3CCAD /* CustomNavigationBar.swift */; };
-		5BD926F327FEE05F00C3CCAD /* getCharacterByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926F227FEE05F00C3CCAD /* getCharacterByIdUseCase.swift */; };
+		5BD926F327FEE05F00C3CCAD /* GetCharacterByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926F227FEE05F00C3CCAD /* GetCharacterByIdUseCase.swift */; };
 		5BD926F727FEE28400C3CCAD /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926F627FEE28400C3CCAD /* CharacterDetailViewController.swift */; };
 		5BD926FB27FEE90C00C3CCAD /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926FA27FEE90C00C3CCAD /* AppNavigator.swift */; };
 		5BD926FD27FEEC7A00C3CCAD /* MarvelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD926FC27FEEC7A00C3CCAD /* MarvelError.swift */; };
@@ -115,7 +115,7 @@
 		5BD926E927FE1C5400C3CCAD /* CharacterTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		5BD926EB27FE1D3000C3CCAD /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		5BD926EE27FED31000C3CCAD /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
-		5BD926F227FEE05F00C3CCAD /* getCharacterByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCharacterByIdUseCase.swift; sourceTree = "<group>"; };
+		5BD926F227FEE05F00C3CCAD /* GetCharacterByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterByIdUseCase.swift; sourceTree = "<group>"; };
 		5BD926F627FEE28400C3CCAD /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		5BD926FA27FEE90C00C3CCAD /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		5BD926FC27FEEC7A00C3CCAD /* MarvelError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelError.swift; sourceTree = "<group>"; };
@@ -352,7 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				5BD926C827FD8D2A00C3CCAD /* GetCharactersUseCase.swift */,
-				5BD926F227FEE05F00C3CCAD /* getCharacterByIdUseCase.swift */,
+				5BD926F227FEE05F00C3CCAD /* GetCharacterByIdUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -755,7 +755,7 @@
 			files = (
 				5BD926D727FDA61900C3CCAD /* Character.swift in Sources */,
 				5BD926C227FD7CB000C3CCAD /* NetworkConstants.swift in Sources */,
-				5BD926F327FEE05F00C3CCAD /* getCharacterByIdUseCase.swift in Sources */,
+				5BD926F327FEE05F00C3CCAD /* GetCharacterByIdUseCase.swift in Sources */,
 				5BD926EA27FE1C5400C3CCAD /* CharacterTableViewCellViewModel.swift in Sources */,
 				5BD926F727FEE28400C3CCAD /* CharacterDetailViewController.swift in Sources */,
 				5B92D5EE2812B8DC00C0C1F8 /* ThumbnailDTO.swift in Sources */,

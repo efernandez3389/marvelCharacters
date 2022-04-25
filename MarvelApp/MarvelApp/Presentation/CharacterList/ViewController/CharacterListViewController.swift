@@ -58,7 +58,7 @@ class CharacterListViewController: UIViewController {
         view.addSubview(activityIndicator)
         view.addSubview(customNavigationBar)
         
-        charactersTableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: "CharacterTableViewCell")
+        charactersTableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.identifier)
         charactersTableView.delegate = self
         charactersTableView.dataSource = self
     }
@@ -120,7 +120,7 @@ extension CharacterListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =
-        tableView.dequeueReusableCell(withIdentifier: "CharacterTableViewCell",
+        tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.identifier,
                                       for: indexPath) as? CharacterTableViewCell
         if let cell = cell {
             cell.configure(withViewModel: viewModel.characterViewModelCellForCharacterAtIndex(index: indexPath.row))
